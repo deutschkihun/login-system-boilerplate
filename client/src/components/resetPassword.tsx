@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
 import { ThemeProvider, createTheme } from "@material-ui/core";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { resetPassword } from "../../interface";
+import { resetPassword } from "../interface";
 import { ErrorMessage } from "@hookform/error-message";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
-import { resetPasswordUser } from "../../_actions/user_actions";
+import { resetPasswordUser } from "../_actions/user_actions";
 
 interface locationCode {
   pathname: string;

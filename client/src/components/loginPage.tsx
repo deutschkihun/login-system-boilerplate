@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
-import { loginFormInputs } from "../../interface";
+import { loginFormInputs } from "../interface";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../_actions/user_actions";
+import { loginUser } from "../_actions/user_actions";
 
 export const LoginPage = (): JSX.Element => {
   const {

@@ -3,7 +3,7 @@ import _ from "lodash/fp";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Controller, Control, MultipleFieldErrors } from "react-hook-form";
-import { IFormInputs } from "../../interface";
+import { IFormInputs } from "../interface";
 
 interface ICountry {
   code: string;

@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { ErrorMessage } from "@hookform/error-message";
-import { IFormInputs, setting } from "../../interface";
+import { IFormInputs, setting } from "../interface";
 import { ThemeProvider, createTheme } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { changeUser, settingUser } from "../../_actions/user_actions";
+import { changeUser, settingUser } from "../_actions/user_actions";
 
 export const SettingPage = (): JSX.Element => {
   const {

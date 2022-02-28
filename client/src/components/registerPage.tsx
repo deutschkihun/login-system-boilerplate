@@ -3,10 +3,10 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { ErrorMessage } from "@hookform/error-message";
 import { CountrySelect } from "./countrySelect";
-import { IFormInputs } from "../../interface";
+import { IFormInputs } from "../interface";
 import { ThemeProvider, createTheme } from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../../_actions/user_actions";
+import { registerUser } from "../_actions/user_actions";
 
 export const RegisterPage = (): JSX.Element => {
   const {

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
-import { settingUser } from "../../_actions/user_actions";
+import { settingUser } from "../_actions/user_actions";
 
 export const MenuPage = () => {
   const history = useHistory();

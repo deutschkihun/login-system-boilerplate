@@ -1,50 +1,24 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import "./App.css";
 import { Switch, Route as Router, BrowserRouter } from "react-router-dom";
 import Wrapper from "./hoc/auth";
-import { LoginPage } from "./components/LoginPage/loginPage";
-import { SuccessPage } from "./components/SuccessPage/successPage";
-import { MenuPage } from "./components/MenuPage/menuPage";
-import { SettingPage } from "./components/SettingPage/settingPage";
-import { SuccessChangePage } from "./components/SuccessPage/successChnagePage";
+import { LoginPage } from "./components/loginPage";
+import { SuccessPage } from "./components/successPage";
+import { MenuPage } from "./components/menuPage";
+import { SettingPage } from "./components/settingPage";
+import { SuccessChangePage } from "./components/successChangePage";
+import { ErrorPage } from "./components/errorPage";
+import { RegisterPage } from "./components/registerPage";
+import { ForgotPage } from "./components/forgotPage";
+import { ForgotEmail } from "./components/forgotEmail";
+import { ForgotPassword } from "./components/forgotPassword";
+import { ResetPassword } from "./components/resetPassword";
 
-const RegisterPage = lazy(() =>
+/*const RegisterPage = lazy(() =>
   import("./components/RegisterPage/registerPage").then(({ RegisterPage }) => ({
     default: RegisterPage,
   }))
-);
-
-const ErrorPage = lazy(() =>
-  import("./components/ErrorPage/errorPage").then(({ ErrorPage }) => ({
-    default: ErrorPage,
-  }))
-);
-
-const ForgotPage = lazy(() =>
-  import("./components/ForgotPage/forgotPage").then(({ ForgotPage }) => ({
-    default: ForgotPage,
-  }))
-);
-
-const ForgotEmail = lazy(() =>
-  import("./components/ForgotPage/forgotEmail").then(({ ForgotEmail }) => ({
-    default: ForgotEmail,
-  }))
-);
-
-const ForgotPassword = lazy(() =>
-  import("./components/ForgotPage/forgotPassword").then(
-    ({ ForgotPassword }) => ({
-      default: ForgotPassword,
-    })
-  )
-);
-
-const ResetPassword = lazy(() =>
-  import("./components/ResetPage/resetPassword").then(({ ResetPassword }) => ({
-    default: ResetPassword,
-  }))
-);
+);*/
 
 //null    =>  anyone
 //true    =>  only for login user
