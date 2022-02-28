@@ -1,5 +1,6 @@
 {
   "name": "project_login_boilerplate",
+  "proxy": "http://127.0.0.1:5010",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

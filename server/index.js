@@ -11,13 +11,15 @@ const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimiter = require('express-rate-limit');
 const path = require('path');
+const morgan = require('morgan')
+
 require('dotenv').config();
 
 
-const buildPath = path.join(__dirname, '..', 'build');
-const clientBuildPath = path.join(__dirname, '..', '/build/index.html')
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
-app.use(express.static(buildPath));
 app.set('trust proxy', 1);
 app.use(
   rateLimiter({
@@ -31,16 +33,24 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(xss());
 
-
 app.use('/api/v1/auth',authentication,auth)
 app.use('/api/v1/users',users)
 
-app.route('/*').get(async (req,res) => {
-  res.sendFile(path.resolve(clientBuildPath))
-});
 
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/build')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+  );
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running...');
+  });
+}
 
 const port = process.env.PORT || 5010;
 const start = async(req,res,err,next) => {
