@@ -36,10 +36,6 @@ app.use(xss());
 app.use('/api/v1/auth',authentication,auth)
 app.use('/api/v1/users',users)
 
-
-app.use(notFoundMiddleware)
-app.use(errorHandlerMiddleware)
-
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '/client/build')));
 
@@ -51,6 +47,10 @@ if (process.env.NODE_ENV === 'production') {
     res.send('API is running...');
   });
 }
+
+
+app.use(notFoundMiddleware)
+app.use(errorHandlerMiddleware)
 
 const port = process.env.PORT || 5010;
 const start = async(req,res,err,next) => {
