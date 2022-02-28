@@ -1,0 +1,9 @@
+export const REGISTER_USER = "register_user";
+export const LOGIN_USER = "login_user"
+export const AUTH_USER = "auth_user"
+export const LOGOUT_USER = "logout_user"
+export const FORGOT_EMAIL_USER = "forgot_email_user"
+export const FORGOT_PASSWORD_USER = "forgot_password_user"
+export const RESET_PASSWORD_USER = "reset_password_user"
+export const SETTING_USER = "setting_user"
+export const CHANGE_USER= "change_user"
