@@ -36,11 +36,13 @@ app.use(xss());
 app.use('/api/v1/auth',authentication,auth)
 app.use('/api/v1/users',users)
 
+const current = path.resolve()
+
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/client/build')));
+  app.use(express.static(path.join(current, '/client/build')));
 
   app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    res.sendFile(path.resolve(current, 'client', 'build', 'index.html'))
   );
 } else {
   app.get('/', (req, res) => {
