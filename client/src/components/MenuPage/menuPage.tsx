@@ -22,9 +22,7 @@ export const MenuPage = () => {
   }, []);
 
   const onClickLogouthandler = async () => {
-    await axios.get("/api/v1/auth/logout").then(() => {
-      history.push('/')
-    });
+    await axios.get("/api/v1/auth/logout")
   };
 
   return (

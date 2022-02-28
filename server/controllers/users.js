@@ -59,7 +59,7 @@ const authUser = asyncWrapper( async (req,res) => {
 })
 
 const logoutUser = asyncWrapper( async (req,res) => {
-    res.clearCookie("x_auth");
+    await res.clearCookie("x_auth");
     return res.status(200).json({logout:true})
 })
 
