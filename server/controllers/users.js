@@ -34,11 +34,11 @@ const registerUser = asyncWrapper(async (req,res) => {
 
 const loginUser = asyncWrapper(async (req,res) => {
     const user = await User.findOne({email: req.body.email})
-    if(!user) throw new NotFoundError('This email does not exist')
+    if(!user)  return res.json({login:"failed", message:"Incorrect email"})
     
     user.comparePassword(req.body.password, async (err,isMatch) => {
         if(!isMatch) {
-            return res.json({login:"failed", message:"Wrong password"})
+            return res.json({login:"failed", message:"Incorrect password"})
         } else {
             var token = jwt.sign(user._id.toHexString(), process.env.JWT_SECRET)
             user.token = token
