@@ -6,13 +6,13 @@ import { LoginPage } from "./components/loginPage";
 import { SuccessPage } from "./components/successPage";
 import { MenuPage } from "./components/menuPage";
 import { SettingPage } from "./components/settingPage";
-import { SuccessChangePage } from "./components/successChangePage";
 import { ErrorPage } from "./components/errorPage";
 import { RegisterPage } from "./components/registerPage";
 import { ForgotPage } from "./components/forgotPage";
 import { ForgotEmail } from "./components/forgotEmail";
 import { ForgotPassword } from "./components/forgotPassword";
 import { ResetPassword } from "./components/resetPassword";
+import { SuccessChangePage } from "./components/successChangePage";
 
 /*const RegisterPage = lazy(() =>
   import("./components/RegisterPage/registerPage").then(({ RegisterPage }) => ({

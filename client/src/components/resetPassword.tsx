@@ -13,7 +13,7 @@ interface locationCode {
   email: string;
 }
 
-export const ResetPassword = () => {
+export const ResetPassword = (): JSX.Element => {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation<locationCode>();

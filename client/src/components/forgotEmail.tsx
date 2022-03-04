@@ -7,7 +7,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useDispatch } from "react-redux";
 import { forgotEmail } from "../_actions/user_actions";
 
-export const ForgotEmail = () => {
+export const ForgotEmail = (): JSX.Element => {
   const history = useHistory();
   const dispatch = useDispatch();
 

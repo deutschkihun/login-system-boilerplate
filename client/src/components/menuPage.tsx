@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import { settingUser } from "../_actions/user_actions";
 
-export const MenuPage = () => {
+export const MenuPage = (): JSX.Element => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [loginedUser, setLoginedUser] = useState("");
