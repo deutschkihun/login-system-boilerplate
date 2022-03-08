@@ -1,18 +1,16 @@
 import React, { Suspense } from "react";
-import "./App.css";
 import { Switch, Route as Router, BrowserRouter } from "react-router-dom";
 import Wrapper from "./hoc/auth";
-import { LoginPage } from "./components/loginPage";
-import { SuccessPage } from "./components/successPage";
-import { MenuPage } from "./components/menuPage";
-import { SettingPage } from "./components/settingPage";
-import { ErrorPage } from "./components/errorPage";
-import { RegisterPage } from "./components/registerPage";
-import { ForgotPage } from "./components/forgotPage";
-import { ForgotEmail } from "./components/forgotEmail";
-import { ForgotPassword } from "./components/forgotPassword";
-import { ResetPassword } from "./components/resetPassword";
-import { SuccessChangePage } from "./components/successChangePage";
+import { LoginPage } from "./pages/loginPage";
+import { SuccessPage } from "./pages/successPage";
+import { MenuPage } from "./pages/menuPage";
+import { SettingPage } from "./pages/settingPage";
+import { ErrorPage } from "./pages/errorPage";
+import { RegisterPage } from "./pages/registerPage";
+import { ForgotPage } from "./pages/forgotPage";
+import { ForgotEmail } from "./pages/forgotEmailPage";
+import { ForgotPassword } from "./pages/forgotPasswordPage";
+import { ResetPassword } from "./pages/resetPassword";
 
 /*const RegisterPage = lazy(() =>
   import("./components/RegisterPage/registerPage").then(({ RegisterPage }) => ({
@@ -34,13 +32,8 @@ const App = (): JSX.Element => {
             <Router
               exact
               path="/success"
-              component={Wrapper(SuccessPage, false)}
-            />
-            <Router
-              exact
-              path="/successchange"
-              component={Wrapper(SuccessChangePage, true)}
-            />
+              component={SuccessPage}
+            /> 
             <Router exact path="/menu" component={Wrapper(MenuPage, true)} />
             <Router exact path="/forgot" component={ForgotPage} />
             <Router exact path="/forgot/email" component={ForgotEmail} />

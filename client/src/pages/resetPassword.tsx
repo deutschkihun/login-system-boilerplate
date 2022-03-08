@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
-import { ThemeProvider, createTheme } from "@material-ui/core";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { resetPassword } from "../interface";
-import { ErrorMessage } from "@hookform/error-message";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { resetPasswordUser } from "../_actions/user_actions";
+import { rex } from "../helper/utils";
+import { ErrorMessageComponent, InputComponent, LabelComponent, TitleComponent } from "../helper/helperComponent";
+import { Form, SubmitButton, SubmitInput } from "../helper/lib";
 
 interface locationCode {
   pathname: string;
@@ -27,12 +28,6 @@ export const ResetPassword = (): JSX.Element => {
     criteriaMode: "all",
   });
 
-  const theme = createTheme({
-    palette: {
-      type: "dark",
-    },
-  });
-
   const password: React.MutableRefObject<string | undefined> = useRef();
   password.current = watch("password");
   const [body, setbody] = useState<resetPassword>();
@@ -42,10 +37,6 @@ export const ResetPassword = (): JSX.Element => {
     data.email = location.state.email;
     setbody(data);
   };
-
-  const strongRegex: RegExp = new RegExp(
-    "^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
-  );
 
   useEffect(() => {
     setEmail(location?.state.email);
@@ -68,42 +59,25 @@ export const ResetPassword = (): JSX.Element => {
   }, [body]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <h1>Reset Password</h1>
-          <section>
-            <label>New Password</label>
-            <input
-              type="password"
-              placeholder="enter your password"
-              {...register("password", {
-                required: "This input is required.",
-                pattern: {
-                  value: strongRegex,
-                  message:
-                    "Password should contain at least 1 uppercase, sepcial character and be eight chracters or longer",
-                },
-              })}
-            />
-            <ErrorMessage
-              errors={errors}
-              name="password"
-              render={({ messages }) => {
-                return messages
-                  ? Object.entries(messages).map(([type, message]) => (
-                      <p key={type}>{message}</p>
-                    ))
-                  : null;
-              }}
-            />
-          </section>
-          <input type="submit" value="Reset Password" />
-          <button type="submit" onClick={() => history.push("/")}>
-            Back to Sign in
-          </button>
-        </div>
-      </form>
-    </ThemeProvider>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <TitleComponent title={"Reset Password"} />
+        <LabelComponent label={"Password"} />
+        <InputComponent
+          type={"password"}
+          placeholder={"enter your password"}
+          register={register}
+          registerValue={"password"}
+          pattern={rex}
+          message={
+            "At least 1 uppercase, special character and longer than 8 chars"
+          }
+        />
+        <ErrorMessageComponent name={"password"} errors={errors} />
+    
+        <SubmitInput value="Reset Password" />
+        <SubmitButton onClick={() => history.push("/")}>
+          Back to Sign in
+        </SubmitButton>
+      </Form>
   );
 };

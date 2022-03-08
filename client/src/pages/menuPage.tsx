@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { TitleComponent } from "../helper/helperComponent";
+import { Form, SubmitButton, Warning } from "../helper/lib";
 import { settingUser } from "../_actions/user_actions";
 
 export const MenuPage = (): JSX.Element => {
@@ -26,21 +28,17 @@ export const MenuPage = (): JSX.Element => {
   };
 
   return (
-    <form>
-      <div>
-        <h1>Menu</h1>
-        <button type="submit" onClick={() => history.push("/setting")}>
+    <Form>
+        <TitleComponent title={"Menu"} />
+        <SubmitButton  onClick={() => history.push("/setting")}>
           Setting
-        </button>
-        <button type="submit" onClick={onClickLogouthandler}>
+        </SubmitButton>
+        <SubmitButton onClick={onClickLogouthandler}>
           Logout
-        </button>
+        </SubmitButton>
         {loginedUser.length > 0 && (
-          <div className="success">
-            <p>You are logged in with {loginedUser}</p>
-          </div>
+            <Warning>You are logged in with {loginedUser}</Warning>
         )}
-      </div>
-    </form>
+    </Form>
   );
 };
