@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useHistory } from "react-router-dom";
 import { IFormInputs, setting } from "../interface";
-import { ThemeProvider, createTheme } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { changeUser, settingUser } from "../_actions/user_actions";
 import { Form, Input, SubmitButton, SubmitInput } from "../helper/lib";
@@ -17,12 +16,6 @@ export const SettingPage = (): JSX.Element => {
     watch,
   } = useForm<IFormInputs>({
     criteriaMode: "all",
-  });
-
-  const theme = createTheme({
-    palette: {
-      type: "dark",
-    },
   });
 
   const history = useHistory();
@@ -63,7 +56,7 @@ export const SettingPage = (): JSX.Element => {
   }, [body]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       {found && (
         <Form onSubmit={handleSubmit(onSubmit)}>
         <TitleComponent title={"Setting"} />
@@ -144,6 +137,6 @@ export const SettingPage = (): JSX.Element => {
        </SubmitButton>
         </Form>
       )}
-    </ThemeProvider>
+    </>
   );
 };
