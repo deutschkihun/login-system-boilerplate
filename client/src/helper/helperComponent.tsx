@@ -36,7 +36,7 @@ export const InputComponent = (props: InputProps): JSX.Element => {
     <Input
       type={props.type}
       defaultValue={props.defaultValue}
-      placeholder="enter your first name"
+      placeholder={props.placeholder}
       {...props.register(props.registerValue, {
         required: "This input is required.",
         pattern: {
